@@ -1,0 +1,84 @@
+/* .rotulo{
+    font-size: 18px;
+    color: blueviolet;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+body {
+  background-color: #1c1c1c;
+  font-family: 'Cinzel Decorative', serif; /* ou outra fonte gótica */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: black;
+}
+
+/* Quadro principal */
+.quadro {
+
+  width: 90%;                   /* ocupa 90% da tela */
+  max-width: 1500px;            /* limite máximo */
+  min-height: 500px;            /* altura mínima para o fundo */
+  padding: 100px;
+  text-align: center;
+  background: linear-gradient(145deg, #2e2e2e, #3b3b3b);
+  border: 3px solid #8b0000;    /* borda sangue */
+  border-radius: 15px;
+  box-shadow: 
+    0 0 10px #8b0000,
+    0 0 20px #b22222,
+    inset 0 0 15px #2f4f2f;
+}
+
+/* Título com logo */
+.titulo {
+  font-size: 32px;
+  font-weight: bold;
+  color: #a67c00; /* dourado envelhecido */
+  text-shadow: 2px 2px 4px #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* espaço entre texto e logo */
+  margin-bottom: 40px;
+}
+
+/* Logo ao lado do título */
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+/* Container para os profissionais */
+.boss {
+  display: flex;           /* ativa flexbox */
+  flex-wrap: wrap;         /* permite quebra de linha */
+  justify-content: center; /* centraliza cada linha */
+  gap: 50px;               /* espaço entre os cards */
+}
+
+.cartao {
+  background-color: #b2aa99;
+  padding: 10px;
+  width: 200px;             /* largura fixa do card */
+  border-radius: 10px;
+  box-shadow: 0 0 10px #8b0000;
+  text-align: center;
+  font-size: 20px;
+}
+
+.cartao img {
+  width: 100%;              /* imagem ocupa toda largura do card */
+  border-radius: 8px;
+  margin-bottom: 10px;
+  height: 200px;
+}
+
+.img-grande {
+  width: 3000px;
+  transition: transform 0.3s; /* Efeito de zoom suave */
+  
+}

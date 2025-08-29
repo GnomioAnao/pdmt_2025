@@ -46,8 +46,7 @@ const App = () => {
           <Cartao cabecalho={comentario.username} rodape={comentario.data}>
             <Comentario
               foto={comentario.foto}
-              comentario={comentario.comentario}
-              
+              comentario={comentario.comentario}  
                />
           </Cartao>
         <div className="mt-3"> {componenteFeedback}</div>

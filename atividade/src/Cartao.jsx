@@ -1,6 +1,6 @@
 const Cartao = (props) => {
   return (
-    <div className="card shadow-sm">
+    <div className="card">
         <div className="card-header text-muted">
             <h3 font-size="30">{props.cabecalho}</h3>  
         </div>

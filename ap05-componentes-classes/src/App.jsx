@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react"
+import Lontra from "./lontra"
 
 export default class App extends React.Component{
 
@@ -9,7 +10,8 @@ export default class App extends React.Component{
       longitude: null,
       estacao: null, 
       data: null, 
-      icone: null
+      icone: null,
+      mensageErro: null
     }
 }
 
@@ -35,7 +37,7 @@ export default class App extends React.Component{
     //21/03
     const d4 = new Date(anoAtual, 2, 21)
     const estaNoSul = latitude < 0 
-    if(data > d1 && data < d2){
+    if(data >= d1 && data < d2){
       return estaNoSul ? 'Inverno' : 'Verão'
     }
     if(data >= d2 && data < d3){
@@ -58,28 +60,71 @@ export default class App extends React.Component{
         const icone = this.icones[estacao]
         //esta errado: this.state.icone = icone
         this.setState({
-          icone: icone
+          icone: icone,
+          estacao: estacao,
+          data: dataAtual,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
         })
       },
 
       (err) => {
         console.log(`Error: ${err}`)
+        this.setState({
+          mensageErro: 'Tente novamente mais tarde'
+        })
       }
     )
   }
 
-  componentDidMount(){
-    this.obterLocalizacao()
-  }
+  // componentDidMount(){
+  //   this.obterLocalizacao()
+  // }
+
+// agora a lontra tem um parceiro, mas ainda, cada lontra é produzida por um componente React chamado Lontra
+
 
   render(){
     return(
-      <div>
-        <div><i className="fa-solid fa-otter"></i></div>
-        <div><i className={`fa-solid fa-${this.state.icone}`}></i></div>
-        <div>
-          <p>Meu app</p>
+      <div className='container mt-2'>
+        <div className="row">
+            <div className='col-12'>
+              {/* componente react chamado Lontra abaixo: */}
+              <Lontra tamanho="fa-3x"/>   
+              <Lontra tamanho="fa-3x"/>
+            </div> 
         </div>
+        <div className="row">
+            <div className='col-sm-12'>
+              <div className="card">
+                <div className='card-body' >
+                  <div 
+                  className="d-flex align-items-center border rounded mb-2" 
+                  style={{height: '6rem'}}>
+                    <i className={`fa-solid fa-4x fa-${this.state.icone}`}></i>
+                    <p className="ms-2 w-75 text-center fs-1">{this.state.estacao}</p>
+                  </div>
+                  <div>
+                    <p className="text-center">
+                    {/* renderização condicional */}
+                    {
+                      this.state.latitude ?
+                      `Coordenadas: ${this.state.latitude}, ${this.state.longitude}. 
+                      Data: ${this.state.data.toLocaleString()}`: 
+                      this.state.mensageErro ? 
+                      `${this.state.mensageErro}`:
+                      `Precisa liberar o acesso à localização`
+                    }
+                    </p>
+                  </div>
+                  <button className='btn btn-outline-primary w-100 mt-2' onClick={this.obterLocalizacao}>
+                    Qual a minha estação?
+                  </button>
+                </div>
+              </div>
+            </div>
+        </div>
+
       </div>
     )
   }

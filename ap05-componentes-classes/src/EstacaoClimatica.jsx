@@ -37,7 +37,7 @@ export class EstacaoClimatica extends Component {
                             {
                                 this.props.latitude ?
                                     `Coordenadas: ${this.props.latitude}, ${this.props.longitude}. 
-                      Data: ${this.state.data.toLocaleString()}` :
+                      Data: ${this.state.data}` :
                                     this.props.mensageErro ?
                                         `${this.props.mensageErro}` :
                                         `Precisa liberar o acesso à localização`

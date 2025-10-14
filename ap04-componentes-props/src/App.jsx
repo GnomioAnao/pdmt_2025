@@ -74,7 +74,7 @@ const App = () => {
         {
           pedido.map((pedido) => (
 
-        <div className="col-sm-12 col-lg-6 col-xxl-4">
+        <div className="<col-sm-12 col-lg-6 col-xxl-4>">
           <Cartao cabecalho={pedido.data}>
             <Pedido
               icone={pedido.icone}

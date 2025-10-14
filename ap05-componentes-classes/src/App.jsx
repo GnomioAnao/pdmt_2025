@@ -1,7 +1,7 @@
 import React from "react"
 import Lontra from "./lontra"
 import EstacaoClimatica from "./EstacaoClimatica"
-import Loading from "./loading"
+import Loading from "./Loading"
 
 
 export default class App extends React.Component {
@@ -96,7 +96,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     console.log('componentDidMount')
-    //this.obterLocalizacao()
+    this.obterLocalizacao()
   }
 
   componentDidUpdate() {
@@ -125,7 +125,7 @@ export default class App extends React.Component {
           <div className='col-sm-12'>
             {
               (!this.state.latitude && !this.state.mensageErro) ?
-                <Loading/>
+                <Loading  />
                 :
                 this.state.mensageErro ?
 

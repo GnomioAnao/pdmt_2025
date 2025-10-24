@@ -1,27 +1,41 @@
 import React from "react"
 import Busca from "./components/Busca"
-import { createClient } from 'pexels'
+// import { createClient } from 'pexels'
 import PexelsLogo from './components/PexelsLogo'
-
+import pexelsClient from "./utils/pexelsClient"
+import Imagem from "./components/imagem"
+import ListaImagem from "./components/ListaImagem"
 
 export default class App extends React.Component {
 
-  pexelsClient = null
+  //pexelsClient = null
 
   //declarar uma variável de estado e guardar o vetor photos nela. ela pode se chamar photos
   state = {
     photos: []
   }
 
+  // onBuscaRealizada = (termo) => {
+  //   this.pexelsClient.photos.search({
+  //     query: termo
+  //   })
+  //     .then(result => this.setState({ photos: result.photos }))
+  // }
+
   onBuscaRealizada = (termo) => {
-    this.pexelsClient.photos.search({
-      query: termo
+    pexelsClient.get('/search', {
+      params: {
+        query: termo
+      }
     })
-      .then(result => this.setState({ photos: result.photos }))
+    .then(result => {
+      //console.log(result.data)
+      this.setState({photos: result.data.photos})
+    })
   }
 
   componentDidMount() {
-    this.pexelsClient = createClient('Zw9V4wdaDCh52JlFXngKoiNysRYuFl4ZbUHaKRxwxGNWzBKGhm9NKVB0')
+    //this.pexelsClient = createClient('')
   }
 
   render() {
@@ -43,14 +57,10 @@ export default class App extends React.Component {
           <Busca onBuscaRealizada={this.onBuscaRealizada} />
         </div>
         <div className="col-12">
-          {
-            // key = indice da foto, posiçao em que se encontra a foto
-            this.state.photos.map((photo) => (
-              <div key={photo.id}>
-                <img src={photo.src.small} alt={photo.alt} />
-              </div>
-            ))
-          }
+          <div className='grid'>
+            <ListaImagem estiloDaImagem='col-12 sm:col-6 lg:col-4 xl:col-3' 
+              photos={this.state.photos}/>
+          </div>
         </div>
       </div>
     )

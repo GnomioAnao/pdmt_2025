@@ -29,27 +29,27 @@ export default function App() {
   }
 
   const remover = (lembrete: Lembrete) => {
-    // Alert.alert(
-      //titulos
-      'Remover lmebrete',
-      `Deseja remover esse lembrete? ${lembrete.texto}`,
-      //lista de botões 
-      [
-        {
-          text: 'Cancelar',
-          style: 'cancel',
-        },
+    // // Alert.alert(
+    //   //titulos
+    //   'Remover lmebrete',
+    //   `Deseja remover esse lembrete? ${lembrete.texto}`,
+    //   //lista de botões 
+    //   [
+    //     {
+    //       text: 'Cancelar',
+    //       style: 'cancel',
+    //     },
 
-        {
-          text: 'Remover',
-          style: 'destructive',
-          onPress: () => {
-            setLembretes((lembretesAtual) =>{
-              return lembretesAtual.filter((l) => l.id !== lembrete.id)
-            })
-          }
-        }
-      ]
+    //     {
+    //       text: 'Remover',
+    //       style: 'destructive',
+    //       onPress: () => {
+    //         setLembretes((lembretesAtual) =>{
+    //           return lembretesAtual.filter((l) => l.id !== lembrete.id)
+    //         })
+    //       }
+    //     }
+    //   ]
     // )
 
     setLembretes(lembretesAtual => lembretesAtual.filter(l => l.id !== lembrete.id))
